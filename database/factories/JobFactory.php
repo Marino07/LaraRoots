@@ -1,8 +1,8 @@
-<?php
-
+<?
 namespace Database\Factories;
 
 use App\Models\Employer;
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +17,12 @@ class JobFactory extends Factory
      */
     public function definition(): array
     {
+        // Kreiraj Employer i uzmi njegov ID
+
         return [
-            'title' => fake()->jobTitle(),
-            'employer_id' => Employer::factory(),
-            'salary' => '50000$'
-            //
+            'title' => $this->faker->jobTitle(),
+            'employer_id' => Employer::factory(), // Postavi ID Employer-a
+            'salary' => '50000$',
         ];
     }
 }
