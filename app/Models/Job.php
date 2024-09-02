@@ -11,7 +11,8 @@ class Job extends Model{
    protected $table = 'job_listenings';
    protected $fillable = [
     'title',
-    'salary'
+    'salary',
+    'employer_id'
    ];
 
    //$job->tags;
