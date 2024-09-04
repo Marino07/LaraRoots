@@ -4,6 +4,10 @@
 
         <x-slot name='heading'>
             <h2 class="text-xl font-semibold mb-4">About jobs</h2>
+            <form action="/jobs/create" method="get"  class="flex items-center">
+                @csrf
+                <x-button>CreateJob</x-button>
+            </form>
         </x-slot>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
