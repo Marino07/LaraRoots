@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class JobController extends Controller
 {
@@ -26,7 +29,10 @@ class JobController extends Controller
     }
     public function edit_job($id){
 
+
     $job = Job::find($id);
+
+    Gate::authorize('edit',$job); // if there is a button
 
     return view('jobs.edit',compact('job'));
     }
