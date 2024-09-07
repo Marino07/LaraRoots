@@ -51,7 +51,7 @@ class JobController extends Controller
             'salary' => $request->input('salary'),
             'employer_id' => 8,
         ]);
-        Mail::to($job->employer->user)->send(new JobPosted($job)); //dajemo id ali u sustini lar uzima email
+        Mail::to($job->employer->user)->queue(new JobPosted($job)); //dajemo id ali u sustini lar uzima email
                                                                     //ovaj job u const dajemo view-u za mail
 
         if($job){

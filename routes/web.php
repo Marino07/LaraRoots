@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\TranslateJob;
 use App\Models\Job;
 use App\Mail\JobPosted;
 use Illuminate\Http\Request;
@@ -10,10 +11,18 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterController;
 
 
-Route::get('test',function(){
-    Mail::to('marino.pusic.5@gmail.com')->send(new JobPosted());
-    return 'Done';
+Route::get('/test2',function(){
+    $joblistening = Job::first();
+
+    TranslateJob::dispatch($joblistening)->delay(now()->addMinutes(1)); //delay vezan uz dispatch
+                                                                        //dispatch pravi instancu TranslateJOB
+
 });
+
+ //Route::get('test',function(){
+   // Mail::to('marino.pusic.5@gmail.com')->send(new JobPosted());
+    //return 'Done';
+//});
 
 
 Route::view('/','home');
