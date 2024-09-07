@@ -1,11 +1,19 @@
 <?php
 
 use App\Models\Job;
+use App\Mail\JobPosted;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterController;
+
+
+Route::get('test',function(){
+    Mail::to('marino.pusic.5@gmail.com')->send(new JobPosted());
+    return 'Done';
+});
 
 
 Route::view('/','home');

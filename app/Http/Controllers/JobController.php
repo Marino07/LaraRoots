@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\User;
+use App\Mail\JobPosted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
@@ -47,8 +49,11 @@ class JobController extends Controller
         $job = Job::create([
             'title' => $request->input('title'),
             'salary' => $request->input('salary'),
-            'employer_id' => 1,
+            'employer_id' => 8,
         ]);
+        Mail::to($job->employer->user)->send(new JobPosted($job)); //dajemo id ali u sustini lar uzima email
+                                                                    //ovaj job u const dajemo view-u za mail
+
         if($job){
             return redirect('/jobs');
         }

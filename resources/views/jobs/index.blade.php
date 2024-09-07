@@ -7,6 +7,7 @@
             <form action="/jobs/create" method="get"  class="flex items-center">
                 @csrf
                 <x-button>CreateJob</x-button>
+
             </form>
         </x-slot>
 
